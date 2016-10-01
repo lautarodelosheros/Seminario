@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		MatrizRotacionIzquierda mI = new MatrizRotacionIzquierda(2.0, 1.5, 2.5);
+		MatrizRotacionIzquierda mI = new MatrizRotacionIzquierda(2.0, 2.5, 1.5);
 		mI.printMatrizRotacion();
 		
 		MiVector vectorI = new MiVector(5.0, 5.0, 12.0);

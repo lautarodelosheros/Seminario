@@ -30,22 +30,22 @@ public abstract class MatrizRotacion {
 		this.matrizX.set(2, 2, Math.cos(anguloEnX));
 		
 		this.matrizY = new SimpleMatrix(3,3);
-		this.matrizY.set(0, 0, Math.cos(anguloEnZ));
+		this.matrizY.set(0, 0, Math.cos(anguloEnY));
 		this.matrizY.set(0, 1, 0.0);		
-		this.matrizY.set(0, 2, Math.sin(anguloEnZ) * -1);
+		this.matrizY.set(0, 2, Math.sin(anguloEnY) * -1);
 		this.matrizY.set(1, 0, 0.0);
 		this.matrizY.set(1, 1, 1.0);
 		this.matrizY.set(1, 2, 0.0);
-		this.matrizY.set(2, 0, Math.sin(anguloEnZ));
+		this.matrizY.set(2, 0, Math.sin(anguloEnY));
 		this.matrizY.set(2, 1, 0.0);
-		this.matrizY.set(2, 2, Math.cos(anguloEnZ));		
+		this.matrizY.set(2, 2, Math.cos(anguloEnY));		
 		
 		this.matrizZ = new SimpleMatrix(3,3);
-		this.matrizZ.set(0, 0, Math.cos(anguloEnY));
-		this.matrizZ.set(0, 1, Math.sin(anguloEnY));
+		this.matrizZ.set(0, 0, Math.cos(anguloEnZ));
+		this.matrizZ.set(0, 1, Math.sin(anguloEnZ));
 		this.matrizZ.set(0, 2, 0.0);		
-		this.matrizZ.set(1, 0, Math.sin(anguloEnY) * -1);
-		this.matrizZ.set(1, 1, Math.cos(anguloEnY));
+		this.matrizZ.set(1, 0, Math.sin(anguloEnZ) * -1);
+		this.matrizZ.set(1, 1, Math.cos(anguloEnZ));
 		this.matrizZ.set(1, 2, 0.0);
 		this.matrizZ.set(2, 0, 0.0);
 		this.matrizZ.set(2, 1, 0.0);
