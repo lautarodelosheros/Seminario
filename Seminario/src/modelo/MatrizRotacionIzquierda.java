@@ -14,7 +14,11 @@ public class MatrizRotacionIzquierda extends MatrizRotacion {
 	protected void crearMatrizRotacion(SimpleMatrix matrizRotacion,
 			SimpleMatrix matrizX, SimpleMatrix matrizY, SimpleMatrix matrizZ) {
 		// TODO Auto-generated method stub
-		this.matrizRotacion = this.matrizX.mult(this.matrizZ.mult(this.matrizY)); 
+		this.matrizX.print();
+		this.matrizY.print();
+		this.matrizZ.print();
+		
+		this.matrizRotacion = this.matrizX.mult(this.matrizZ).mult(this.matrizY); 
 		
 		this.matrizRotacion.set(1, 2, 0.0);
 		this.matrizRotacion.set(2, 1, 0.0);
