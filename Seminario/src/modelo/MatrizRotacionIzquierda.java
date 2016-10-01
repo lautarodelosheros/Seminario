@@ -16,8 +16,8 @@ public class MatrizRotacionIzquierda extends MatrizRotacion {
 		// TODO Auto-generated method stub
 		this.matrizRotacion = this.matrizX.mult(this.matrizZ.mult(this.matrizY)); 
 		
-		this.matrizRotacion.set(2, 3, 0.0);
-		this.matrizRotacion.set(3, 2, 0.0);
+		this.matrizRotacion.set(1, 2, 0.0);
+		this.matrizRotacion.set(2, 1, 0.0);
 	}
 		
 }
