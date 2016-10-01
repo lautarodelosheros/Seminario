@@ -8,10 +8,10 @@ import org.ejml.simple.SimpleMatrix;
 
 
 public abstract class MatrizRotacion {
-	SimpleMatrix matrizRotacion;
-	SimpleMatrix matrizX;
-	SimpleMatrix matrizY;
-	SimpleMatrix matrizZ;
+	protected SimpleMatrix matrizRotacion;
+	protected SimpleMatrix matrizX;
+	protected SimpleMatrix matrizY;
+	protected SimpleMatrix matrizZ;
 	
 	public MatrizRotacion(double anguloEnX, double anguloEnY, double anguloEnZ) {
 		this.matrizRotacion = new SimpleMatrix(3,3);

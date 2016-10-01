@@ -3,7 +3,7 @@ package modelo;
 import org.ejml.simple.SimpleMatrix;
 
 public class MiVector {
-	SimpleMatrix vector;
+	private SimpleMatrix vector;
 
 	public MiVector(double x, double y, double z) {
 		// TODO Auto-generated constructor stub
@@ -22,6 +22,14 @@ public class MiVector {
 	public SimpleMatrix getOnSimpleMatrix() {
 		// TODO Auto-generated method stub
 		return this.vector;
+	}
+	
+	public MiVector sumar(MiVector vector) {
+		return new MiVector(this.vector.plus(vector.getOnSimpleMatrix()));
+	}
+	
+	public MiVector restar(MiVector vector) {
+		return new MiVector(this.vector.minus(vector.getOnSimpleMatrix()));
 	}
 	
 	public void imprimir() {
