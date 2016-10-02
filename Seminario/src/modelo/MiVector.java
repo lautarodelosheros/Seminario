@@ -32,8 +32,8 @@ public class MiVector {
 		return new MiVector(this.vector.minus(vector.getOnSimpleMatrix()));
 	}
 	
-	public void imprimir() {
-		this.vector.print();
+	public String toString() {
+		return this.vector.toString();
 	}
 
 }

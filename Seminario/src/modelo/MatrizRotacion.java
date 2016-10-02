@@ -58,8 +58,8 @@ public abstract class MatrizRotacion {
 			SimpleMatrix matrizX, SimpleMatrix matrizY,
 			SimpleMatrix matrizZ);
 
-	public void printMatrizRotacion() {
-		this.matrizRotacion.print();
+	public String toString() {
+		return this.matrizRotacion.toString();
 	}
 	
 	public MiVector rotarVector(MiVector vector) {

@@ -10,29 +10,29 @@ public class Main {
 		// TODO Auto-generated method stub
 		//Prueba rotacion izquierda vector
 		MatrizRotacionIzquierda mI = new MatrizRotacionIzquierda(2.0, 2.5, 1.5);
-		mI.printMatrizRotacion();
+		System.out.println(mI.toString());
 		
 		MiVector vectorI = new MiVector(5.0, 5.0, 12.0);
 		
-		vectorI.imprimir();
+		System.out.println(vectorI.toString());
 		
-		mI.rotarVector(vectorI).imprimir();
+		System.out.println(mI.rotarVector(vectorI).toString());
 				
 		//prueba de resta
 		MiVector vectorA = new MiVector(5.0, 5.0, 12);
 		MiVector vectorB = new MiVector(5.0, 6.0, 6.244997998);
 		
-		vectorA.restar(vectorB).imprimir();
+		System.out.println(vectorA.restar(vectorB).toString());
 		
 		//Prueba rotacion derecha vector
 		MatrizRotacionDerecha mD = new MatrizRotacionDerecha(1.5, 2.0, 2.5);
-		mD.printMatrizRotacion();
+		System.out.println(mD.toString());
 		
 		MiVector vectorD = new MiVector(0.0, -1.0, 5.755002002);
 		
-		vectorD.imprimir();
+		System.out.println(vectorD.toString());
 		
-		mD.rotarVector(vectorD).imprimir();
+		System.out.println(mD.rotarVector(vectorD).toString());
 		
 	}
 
