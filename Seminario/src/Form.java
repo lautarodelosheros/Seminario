@@ -5,6 +5,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 
 public class Form {
@@ -39,6 +41,15 @@ public class Form {
 	private JTextField txtM5z;
 	private JButton btnSimular;
 	private JTextArea txtrResultado;
+	private JLabel lblAngRotIzq;
+	private JLabel lblAngRotDer;
+	private JLabel lblVecSIzq;
+	private JLabel lblVecSDer;
+	private JLabel lblVecM1;
+	private JLabel lblVecM2;
+	private JLabel lblVecM3;
+	private JLabel lblVecM4;
+	private JLabel lblVecM5;
 
 	/**
 	 * Launch the application.
@@ -73,192 +84,237 @@ public class Form {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		lblAngRotIzq = new JLabel("Angulos de rotacion Izquierda");
+		lblAngRotIzq.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblAngRotIzq.setBounds(59, 30, 284, 19);
+		frame.getContentPane().add(lblAngRotIzq);
+		
 		txtRxi = new JTextField();
 		txtRxi.setText("rxi");
-		txtRxi.setBounds(59, 30, 114, 19);
+		txtRxi.setBounds(59, 50, 114, 19);
 		frame.getContentPane().add(txtRxi);
 		txtRxi.selectAll();
 		txtRxi.setColumns(5);
 		
 		txtRyi = new JTextField();
 		txtRyi.setText("ryi");
-		txtRyi.setBounds(185, 30, 114, 19);
+		txtRyi.setBounds(185, 50, 114, 19);
 		frame.getContentPane().add(txtRyi);
 		txtRyi.selectAll();
 		txtRyi.setColumns(10);
 		
 		txtRzi = new JTextField();
 		txtRzi.setText("rzi");
-		txtRzi.setBounds(310, 30, 114, 19);
+		txtRzi.setBounds(310, 50, 114, 19);
 		frame.getContentPane().add(txtRzi);
 		txtRzi.selectAll();
 		txtRzi.setColumns(10);
 		
+		lblAngRotDer = new JLabel("Angulos de rotacion Derecha");
+		lblAngRotDer.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblAngRotDer.setBounds(59, 70, 284, 19);
+		frame.getContentPane().add(lblAngRotDer);
+		
 		txtRxd = new JTextField();
 		txtRxd.setText("rxd");
 		txtRxd.setColumns(5);
-		txtRxd.setBounds(59, 63, 114, 19);
+		txtRxd.setBounds(59, 90, 114, 19);
 		txtRxd.selectAll();
 		frame.getContentPane().add(txtRxd);
 		
 		txtRyd = new JTextField();
 		txtRyd.setText("ryd");
 		txtRyd.setColumns(10);
-		txtRyd.setBounds(185, 63, 114, 19);
+		txtRyd.setBounds(185, 90, 114, 19);
 		txtRyd.selectAll();
 		frame.getContentPane().add(txtRyd);
 		
 		txtRzd = new JTextField();
 		txtRzd.setText("rzd");
 		txtRzd.setColumns(10);
-		txtRzd.setBounds(310, 63, 114, 19);
+		txtRzd.setBounds(310, 90, 114, 19);
 		txtRzd.selectAll();
 		frame.getContentPane().add(txtRzd);
+		
+		lblVecSIzq = new JLabel("Vector ubicacion camara Izquierda");
+		lblVecSIzq.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecSIzq.setBounds(59, 110, 284, 19);
+		frame.getContentPane().add(lblVecSIzq);
 		
 		txtSxi = new JTextField();
 		txtSxi.setText("sxi");
 		txtSxi.setColumns(5);
-		txtSxi.setBounds(59, 96, 114, 19);
+		txtSxi.setBounds(59, 130, 114, 19);
 		txtSxi.selectAll();
 		frame.getContentPane().add(txtSxi);
 		
 		txtSyi = new JTextField();
 		txtSyi.setText("syi");
 		txtSyi.setColumns(10);
-		txtSyi.setBounds(185, 96, 114, 19);
+		txtSyi.setBounds(185, 130, 114, 19);
 		txtSyi.selectAll();
 		frame.getContentPane().add(txtSyi);
 		
 		txtSzi = new JTextField();
 		txtSzi.setText("szi");
 		txtSzi.setColumns(10);
-		txtSzi.setBounds(310, 96, 114, 19);
+		txtSzi.setBounds(310, 130, 114, 19);
 		txtSzi.selectAll();
 		frame.getContentPane().add(txtSzi);
+		
+		lblVecSDer = new JLabel("Vector ubicacion camara Derecha");
+		lblVecSDer.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecSDer.setBounds(59, 150, 284, 19);
+		frame.getContentPane().add(lblVecSDer);
 		
 		txtSxd = new JTextField();
 		txtSxd.setText("sxd");
 		txtSxd.setColumns(5);
-		txtSxd.setBounds(59, 127, 114, 19);
+		txtSxd.setBounds(59, 170, 114, 19);
 		txtSxd.selectAll();
 		frame.getContentPane().add(txtSxd);
 		
 		txtSyd = new JTextField();
 		txtSyd.setText("syd");
 		txtSyd.setColumns(10);
-		txtSyd.setBounds(185, 127, 114, 19);
+		txtSyd.setBounds(185, 170, 114, 19);
 		txtSyd.selectAll();
 		frame.getContentPane().add(txtSyd);
 		
 		txtSzd = new JTextField();
 		txtSzd.setText("szd");
 		txtSzd.setColumns(10);
-		txtSzd.setBounds(310, 127, 114, 19);
+		txtSzd.setBounds(310, 170, 114, 19);
 		txtSzd.selectAll();
 		frame.getContentPane().add(txtSzd);
+		
+		lblVecM1 = new JLabel("Vector punto referencial M1");
+		lblVecM1.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM1.setBounds(59, 190, 284, 19);
+		frame.getContentPane().add(lblVecM1);
 		
 		txtM1x = new JTextField();
 		txtM1x.setText("m1xd");
 		txtM1x.setColumns(5);
-		txtM1x.setBounds(59, 158, 114, 19);
+		txtM1x.setBounds(59, 210, 114, 19);
 		txtM1x.selectAll();
 		frame.getContentPane().add(txtM1x);
 		
 		txtM1y = new JTextField();
 		txtM1y.setText("m1yd");
 		txtM1y.setColumns(10);
-		txtM1y.setBounds(185, 158, 114, 19);
+		txtM1y.setBounds(185, 210, 114, 19);
 		txtM1y.selectAll();
 		frame.getContentPane().add(txtM1y);
 		
 		txtM1z = new JTextField();
 		txtM1z.setText("m1zd");
 		txtM1z.setColumns(10);
-		txtM1z.setBounds(310, 158, 114, 19);
+		txtM1z.setBounds(310, 210, 114, 19);
 		txtM1z.selectAll();
 		frame.getContentPane().add(txtM1z);
+		
+		lblVecM2 = new JLabel("Vector punto referencial M2");
+		lblVecM2.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM2.setBounds(59, 230, 284, 19);
+		frame.getContentPane().add(lblVecM2);
 		
 		txtM2x = new JTextField();
 		txtM2x.setText("m2xd");
 		txtM2x.setColumns(5);
-		txtM2x.setBounds(59, 189, 114, 19);
+		txtM2x.setBounds(59, 250, 114, 19);
 		txtM2x.selectAll();
 		frame.getContentPane().add(txtM2x);
 		
 		txtM2y = new JTextField();
 		txtM2y.setText("m2yd");
 		txtM2y.setColumns(10);
-		txtM2y.setBounds(185, 189, 114, 19);
+		txtM2y.setBounds(185, 250, 114, 19);
 		txtM2y.selectAll();
 		frame.getContentPane().add(txtM2y);
 		
 		txtM2z = new JTextField();
 		txtM2z.setText("m2zd");
 		txtM2z.setColumns(10);
-		txtM2z.setBounds(310, 189, 114, 19);
+		txtM2z.setBounds(310, 250, 114, 19);
 		txtM2z.selectAll();
 		frame.getContentPane().add(txtM2z);
+		
+		lblVecM3 = new JLabel("Vector punto referencial M3");
+		lblVecM3.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM3.setBounds(59, 270, 284, 19);
+		frame.getContentPane().add(lblVecM3);
 		
 		txtM3x = new JTextField();
 		txtM3x.setText("m3xd");
 		txtM3x.setColumns(5);
-		txtM3x.setBounds(59, 220, 114, 19);
+		txtM3x.setBounds(59, 290, 114, 19);
 		txtM3x.selectAll();
 		frame.getContentPane().add(txtM3x);
 		
 		txtM3y = new JTextField();
 		txtM3y.setText("m3yd");
 		txtM3y.setColumns(10);
-		txtM3y.setBounds(185, 220, 114, 19);
+		txtM3y.setBounds(185, 290, 114, 19);
 		txtM3y.selectAll();
 		frame.getContentPane().add(txtM3y);
 		
 		txtM3z = new JTextField();
 		txtM3z.setText("m3zd");
 		txtM3z.setColumns(10);
-		txtM3z.setBounds(310, 220, 114, 19);
+		txtM3z.setBounds(310, 290, 114, 19);
 		txtM3z.selectAll();
 		frame.getContentPane().add(txtM3z);
+		
+		lblVecM4 = new JLabel("Vector punto referencial M4");
+		lblVecM4.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM4.setBounds(59, 310, 284, 19);
+		frame.getContentPane().add(lblVecM4);
 		
 		txtM4x = new JTextField();
 		txtM4x.setText("m4xd");
 		txtM4x.setColumns(5);
-		txtM4x.setBounds(59, 251, 114, 19);
+		txtM4x.setBounds(59, 330, 114, 19);
 		txtM4x.selectAll();
 		frame.getContentPane().add(txtM4x);
 		
 		txtM4y = new JTextField();
 		txtM4y.setText("m4yd");
 		txtM4y.setColumns(10);
-		txtM4y.setBounds(185, 251, 114, 19);
+		txtM4y.setBounds(185, 330, 114, 19);
 		txtM4y.selectAll();
 		frame.getContentPane().add(txtM4y);
 		
 		txtM4z = new JTextField();
 		txtM4z.setText("m4zd");
 		txtM4z.setColumns(10);
-		txtM4z.setBounds(310, 251, 114, 19);
+		txtM4z.setBounds(310, 330, 114, 19);
 		txtM4z.selectAll();
 		frame.getContentPane().add(txtM4z);
+		
+		lblVecM5 = new JLabel("Vector punto referencial M5");
+		lblVecM5.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM5.setBounds(59, 350, 284, 19);
+		frame.getContentPane().add(lblVecM5);
 		
 		txtM5x = new JTextField();
 		txtM5x.setText("m5xd");
 		txtM5x.setColumns(5);
-		txtM5x.setBounds(59, 282, 114, 19);
+		txtM5x.setBounds(59, 370, 114, 19);
 		txtM5x.selectAll();
 		frame.getContentPane().add(txtM5x);
 		
 		txtM5y = new JTextField();
 		txtM5y.setText("m5yd");
 		txtM5y.setColumns(10);
-		txtM5y.setBounds(185, 282, 114, 19);
+		txtM5y.setBounds(185, 370, 114, 19);
 		txtM5y.selectAll();
 		frame.getContentPane().add(txtM5y);
 		
 		txtM5z = new JTextField();
 		txtM5z.setText("m5zd");
 		txtM5z.setColumns(10);
-		txtM5z.setBounds(310, 282, 114, 19);
+		txtM5z.setBounds(310, 370, 114, 19);
 		txtM5z.selectAll();
 		frame.getContentPane().add(txtM5z);
 						
@@ -275,7 +331,7 @@ public class Form {
 		JScrollPane scrollPane = new JScrollPane(txtrResultado);
 		scrollPane.setBounds(472, 63, 300, 350);		
 		frame.getContentPane().add(scrollPane);
-				
+						
 	}
 
 	public JTextField getTxtRxi() {
