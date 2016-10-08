@@ -331,6 +331,36 @@ public class Form {
 		JScrollPane scrollPane = new JScrollPane(txtrResultado);
 		scrollPane.setBounds(472, 63, 300, 350);		
 		frame.getContentPane().add(scrollPane);
+		
+		//Eliminar harcode
+		txtRxi.setText("2.5");
+		txtRyi.setText("1.5");
+		txtRzi.setText("2");
+		txtRxd.setText("1.5");
+		txtRyd.setText("2");
+		txtRzd.setText("2.5");
+		txtSxi.setText("0");
+		txtSyi.setText("0");
+		txtSzi.setText("0");
+		txtSxd.setText("5");
+		txtSyd.setText("6");
+		txtSzd.setText("6.244");
+		txtM1x.setText("5");
+		txtM1y.setText("5");
+		txtM1z.setText("12");
+		txtM2x.setText("7");
+		txtM2y.setText("4");
+		txtM2z.setText("15");
+		txtM3x.setText("9");
+		txtM3y.setText("2");
+		txtM3z.setText("13");
+		txtM4x.setText("12");
+		txtM4y.setText("3");
+		txtM4z.setText("13");
+		txtM5x.setText("16");
+		txtM5y.setText("2");
+		txtM5z.setText("12");
+		
 						
 	}
 
@@ -449,4 +479,5 @@ public class Form {
 	public void setTxtrResultado(JTextArea txtrResultado) {
 		this.txtrResultado = txtrResultado;
 	}
+	
 }

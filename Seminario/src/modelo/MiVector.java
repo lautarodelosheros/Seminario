@@ -1,5 +1,9 @@
 package modelo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 import org.ejml.simple.SimpleMatrix;
 
 public class MiVector {
@@ -33,7 +37,16 @@ public class MiVector {
 	}
 
 	public String toString() {
-		return this.vector.toString();
+		ByteArrayOutputStream sVector = new ByteArrayOutputStream();
+		
+		PrintStream salidaEstandar = System.out;
+		PrintStream salidaString = new PrintStream(sVector);
+		System.setOut(salidaString);
+		this.vector.print(10, 10);
+		System.out.flush();
+		System.setOut(salidaEstandar);
+		
+		return sVector.toString();
 	}
 
 	public double getComponenteX() {

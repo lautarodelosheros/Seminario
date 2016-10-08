@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -59,7 +61,17 @@ public abstract class MatrizRotacion {
 			SimpleMatrix matrizZ);
 
 	public String toString() {
-		return this.matrizRotacion.toString();
+		ByteArrayOutputStream sMatrizRotcion = new ByteArrayOutputStream();
+		
+		PrintStream salidaEstandar = System.out;
+		PrintStream salidaString = new PrintStream(sMatrizRotcion);
+		System.setOut(salidaString);
+		this.matrizRotacion.print(10, 10);
+		System.out.flush();
+		System.setOut(salidaEstandar);
+		
+		return sMatrizRotcion.toString();
+	
 	}
 	
 	public MiVector rotarVector(MiVector vector) {

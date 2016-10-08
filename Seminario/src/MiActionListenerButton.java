@@ -1,9 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import modelo.MatrizGaussReduce;
 import modelo.MatrizRotacionDerecha;
 import modelo.MatrizRotacionIzquierda;
 import modelo.MiVector;
+import modelo.ResultadoError;
 
 public class MiActionListenerButton implements ActionListener {
 	private Form formulario;
@@ -23,18 +25,18 @@ public class MiActionListenerButton implements ActionListener {
 		// TODO Auto-generated method stub
 
 		// Matriz de rotacion izquierda
-		MatrizRotacionIzquierda mRI = new MatrizRotacionIzquierda(new Double(
-				this.formulario.getTxtRxi().getText()), new Double(
-				this.formulario.getTxtRyi().getText()), new Double(
-				this.formulario.getTxtRzi().getText()));
+		MatrizRotacionIzquierda mRI = new MatrizRotacionIzquierda(
+				convertirARadianes(new Double(this.formulario.getTxtRxi().getText())), 
+				convertirARadianes(new Double(this.formulario.getTxtRyi().getText())), 
+				convertirARadianes(new Double(this.formulario.getTxtRzi().getText())));
 
 		this.formulario.getTxtrResultado().setText(mRI.toString());
 
 		// Matriz de rotacion derecha
-		MatrizRotacionDerecha mRD = new MatrizRotacionDerecha(new Double(
-				this.formulario.getTxtRxd().getText()), new Double(
-				this.formulario.getTxtRyd().getText()), new Double(
-				this.formulario.getTxtRzd().getText()));
+		MatrizRotacionDerecha mRD = new MatrizRotacionDerecha(
+				convertirARadianes(new Double(this.formulario.getTxtRxd().getText())), 
+				convertirARadianes(new Double(this.formulario.getTxtRyd().getText())), 
+				convertirARadianes(new Double(this.formulario.getTxtRzd().getText())));
 
 		this.formulario.getTxtrResultado().append(mRD.toString());
 
@@ -134,30 +136,87 @@ public class MiActionListenerButton implements ActionListener {
 										.getComponenteZ()).toString());
 
 		this.formulario.getTxtrResultado().append(
-				mRD.rotarVector(m1Vector.restar(sVectorI))
+				mRD.rotarVector(m1Vector.restar(sVectorD))
 						.dividirPorEscalar(
-								mRD.rotarVector(m1Vector.restar(sVectorI))
+								mRD.rotarVector(m1Vector.restar(sVectorD))
 										.getComponenteZ()).toString());
 		this.formulario.getTxtrResultado().append(
-				mRD.rotarVector(m2Vector.restar(sVectorI))
+				mRD.rotarVector(m2Vector.restar(sVectorD))
 						.dividirPorEscalar(
-								mRD.rotarVector(m2Vector.restar(sVectorI))
+								mRD.rotarVector(m2Vector.restar(sVectorD))
 										.getComponenteZ()).toString());
 		this.formulario.getTxtrResultado().append(
-				mRD.rotarVector(m3Vector.restar(sVectorI))
+				mRD.rotarVector(m3Vector.restar(sVectorD))
 						.dividirPorEscalar(
-								mRD.rotarVector(m3Vector.restar(sVectorI))
+								mRD.rotarVector(m3Vector.restar(sVectorD))
 										.getComponenteZ()).toString());
 		this.formulario.getTxtrResultado().append(
-				mRD.rotarVector(m4Vector.restar(sVectorI))
+				mRD.rotarVector(m4Vector.restar(sVectorD))
 						.dividirPorEscalar(
-								mRD.rotarVector(m4Vector.restar(sVectorI))
+								mRD.rotarVector(m4Vector.restar(sVectorD))
 										.getComponenteZ()).toString());
 		this.formulario.getTxtrResultado().append(
-				mRD.rotarVector(m5Vector.restar(sVectorI))
+				mRD.rotarVector(m5Vector.restar(sVectorD))
 						.dividirPorEscalar(
-								mRD.rotarVector(m5Vector.restar(sVectorI))
+								mRD.rotarVector(m5Vector.restar(sVectorD))
 										.getComponenteZ()).toString());
+		
+		MatrizGaussReduce mGR = new MatrizGaussReduce(5, 5);
+		mGR.agregarVectorEcuacion(
+				mRI.rotarVector(m1Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m1Vector.restar(sVectorI)).getComponenteZ()), 
+				mRD.rotarVector(m1Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m1Vector.restar(sVectorD)).getComponenteZ()));
+		mGR.agregarVectorEcuacion(
+				mRI.rotarVector(m2Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m2Vector.restar(sVectorI)).getComponenteZ()), 
+				mRD.rotarVector(m2Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m2Vector.restar(sVectorD)).getComponenteZ()));
+		mGR.agregarVectorEcuacion(
+				mRI.rotarVector(m3Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m3Vector.restar(sVectorI)).getComponenteZ()), 
+				mRD.rotarVector(m3Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m3Vector.restar(sVectorD)).getComponenteZ()));
+		mGR.agregarVectorEcuacion(
+				mRI.rotarVector(m4Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m4Vector.restar(sVectorI)).getComponenteZ()), 
+				mRD.rotarVector(m4Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m4Vector.restar(sVectorD)).getComponenteZ()));
+		mGR.agregarVectorEcuacion(
+				mRI.rotarVector(m5Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m5Vector.restar(sVectorI)).getComponenteZ()), 
+				mRD.rotarVector(m5Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m5Vector.restar(sVectorD)).getComponenteZ()));
+		
+		mGR.resolver();
+		
+		this.formulario.getTxtrResultado().append("beta Izq: " + mGR.getBetaIzq() + "\n");
+		this.formulario.getTxtrResultado().append("gamma Izq: " + mGR.getGammaIzq() + "\n");
+		this.formulario.getTxtrResultado().append("alfa Der: " + mGR.getAlfaDer() + "\n");
+		this.formulario.getTxtrResultado().append("beta Der: " + mGR.getBetaDer() + "\n");
+		this.formulario.getTxtrResultado().append("gamma Der: " + mGR.getGammaDer() + "\n");
+		
+		ResultadoError Re = new ResultadoError(mGR.getBetaIzq(), 
+				mGR.getGammaIzq(),
+				mGR.getAlfaDer(),
+				mGR.getBetaDer(),
+				mGR.getGammaDer(),
+				new Double(this.formulario.getTxtRxi().getText()), 
+				new Double(this.formulario.getTxtRyi().getText()), 
+				new Double(this.formulario.getTxtRzi().getText()),
+				new Double(this.formulario.getTxtRxd().getText()), 
+				new Double(this.formulario.getTxtRyd().getText()), 
+				new Double(this.formulario.getTxtRzd().getText()));
+		
+		Re.calcularAngulos();
+		
+		this.formulario.getTxtrResultado().append("AnguloXDer: " + Re.getAnguloXDer() + "\n");
+		this.formulario.getTxtrResultado().append("AnguloYDer: " + Re.getAnguloYDer() + "\n");
+		this.formulario.getTxtrResultado().append("AnguloZDer: " + Re.getAnguloZDer() + "\n");
+		this.formulario.getTxtrResultado().append("AnguloXIzq: " + Re.getAnguloXIzq() + "\n");
+		this.formulario.getTxtrResultado().append("AnguloYIzq: " + Re.getAnguloYIzq() + "\n");
+		this.formulario.getTxtrResultado().append("AnguloZIzq: " + Re.getAnguloZIzq() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloXIzq: " + Re.getErrorAnguloXDer() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloYDer: " + Re.getErrorAnguloYDer() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloZDer: " + Re.getErrorAnguloZDer() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloXIzq: " + Re.getErrorAnguloXIzq() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloYIzq: " + Re.getErrorAnguloYIzq() + "\n");
+		this.formulario.getTxtrResultado().append("ErrorAnguloZIzq: " + Re.getErrorAnguloZIzq() + "\n");
+						
+	}
+	
+	private double convertirARadianes(Double angulo) {
+		return (angulo * Math.PI) / 180;
 	}
 
 }
