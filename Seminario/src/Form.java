@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -52,27 +50,18 @@ public class Form {
 	private JLabel lblVecM5;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Form window = new Form();
-					window.frame.setVisible(true);
-					window.btnSimular.addActionListener(new MiActionListenerButton(window));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	/**
 	 * Create the application.
 	 */
 	public Form() {
 		initialize();
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JButton getBtnSimular() {
+		return btnSimular;
 	}
 
 	/**

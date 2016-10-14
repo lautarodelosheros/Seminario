@@ -74,20 +74,26 @@ public abstract class MatrizRotacion {
 	
 	}
 	
-	public MiVector rotarVector(MiVector vector) {
-		return new MiVector(this.matrizRotacion.mult(vector.getOnSimpleMatrix()));
+	public MatrizVector rotarVector(MatrizVector vector) throws Exception {
+		if (vector.getOnSimpleMatrix().numRows() > 3)
+			throw new Exception("rotarVector(MiVector vector) : Dimension invalida");
+		return new MatrizVector(this.matrizRotacion.mult(vector.getOnSimpleMatrix()));
 	}
 	
-	public ArrayList<MiVector> rotarVectores(ArrayList<MiVector> vectores) {
-		ArrayList<MiVector> vectoresRotados = new ArrayList<MiVector>();
+	public ArrayList<MatrizVector> rotarVectores(ArrayList<MatrizVector> vectores) throws Exception {
+		ArrayList<MatrizVector> vectoresRotados = new ArrayList<MatrizVector>();
 		
-		Iterator<MiVector> itVecRot = vectores.iterator();
+		Iterator<MatrizVector> itVecRot = vectores.iterator();
 		
 		while (itVecRot.hasNext()) {
 			vectoresRotados.add(rotarVector(itVecRot.next()));
 		}
 				
 		return vectoresRotados;
+	}
+	
+	public double getTraza() {
+		return this.matrizRotacion.trace();
 	}
 
 }
