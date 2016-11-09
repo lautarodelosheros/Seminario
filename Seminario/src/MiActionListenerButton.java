@@ -7,6 +7,7 @@ import modelo.MatrizRotacionIzquierda;
 import modelo.MatrizVector;
 import modelo.ResultadoError;
 import modelo.VectorEcuacionCincoVariables;
+import modelo.VectorEcuacionNueveVariables;
 
 public class MiActionListenerButton implements ActionListener {
 	private Form formulario;
@@ -180,12 +181,41 @@ public class MiActionListenerButton implements ActionListener {
 					mRI.rotarVector(m5Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m5Vector.restar(sVectorI)).getComponenteZ()), 
 					mRD.rotarVector(m5Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m5Vector.restar(sVectorD)).getComponenteZ())));
 			
-			this.formulario.getTxtrResultado().append("tita I: " + Math.acos((mRI.getTraza() - 1) / 2) + "\n");
-			this.formulario.getTxtrResultado().append("tita D: " + Math.acos((mRD.getTraza() - 1) / 2) + "\n");
+			/*MatrizVector m6Vector = new MatrizVector(0.5,1,11);
+			MatrizVector m7Vector = new MatrizVector(1.5,1,13);
+			MatrizVector m8Vector = new MatrizVector(3,1,15);
+			MatrizVector m9Vector = new MatrizVector(4.5,1,12);
+			
+			mGR.agregarVectorEcuacion(new VectorEcuacionNueveVariables(//new VectorEcuacionCincoVariables(
+					mRI.rotarVector(m6Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m6Vector.restar(sVectorI)).getComponenteZ()), 
+					mRD.rotarVector(m6Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m6Vector.restar(sVectorD)).getComponenteZ())));
+			mGR.agregarVectorEcuacion(new VectorEcuacionNueveVariables(//new VectorEcuacionCincoVariables(
+					mRI.rotarVector(m7Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m7Vector.restar(sVectorI)).getComponenteZ()), 
+					mRD.rotarVector(m7Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m7Vector.restar(sVectorD)).getComponenteZ())));
+			mGR.agregarVectorEcuacion(new VectorEcuacionNueveVariables(//new VectorEcuacionCincoVariables(
+					mRI.rotarVector(m8Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m8Vector.restar(sVectorI)).getComponenteZ()), 
+					mRD.rotarVector(m8Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m8Vector.restar(sVectorD)).getComponenteZ())));
+			mGR.agregarVectorEcuacion(new VectorEcuacionNueveVariables(//new VectorEcuacionCincoVariables(
+					mRI.rotarVector(m9Vector.restar(sVectorI)).dividirPorEscalar(mRI.rotarVector(m9Vector.restar(sVectorI)).getComponenteZ()), 
+					mRD.rotarVector(m9Vector.restar(sVectorD)).dividirPorEscalar(mRD.rotarVector(m9Vector.restar(sVectorD)).getComponenteZ())));
+			*/
 			
 			this.formulario.getTxtrResultado().append(mGR.toString());
 			
 			mGR.resolver();
+			
+			this.formulario.getTxtrResultado().append(mGR.toString());
+			
+			/*double titai = Math.acos((mRI.getTraza() - 1) / 2);
+			double titad = Math.acos((mRD.getTraza() - 1) / 2);*/
+			/*double titai = Math.asin(Math.sqrt(Math.pow(mGR.getBetaIzq(),2) + Math.pow(mGR.getGammaIzq(), 2)));
+			double titad = Math.asin(Math.sqrt(Math.pow(mGR.getAlfaDer(),2) + Math.pow(mGR.getBetaDer(), 2) + Math.pow(mGR.getGammaDer(), 2)));*/
+			
+			double titai = Math.asin(Math.sqrt(Math.pow((Math.sqrt(2) / 2) * 0.04,2) + Math.pow((Math.sqrt(2) / 2) * 0.04, 2)));
+			double titad = Math.asin(Math.sqrt(Math.pow((Math.sqrt(6) / 5) * 0.04,2) + Math.pow((Math.sqrt(6) / 5) * 0.04, 2) + Math.pow((Math.sqrt(13) / 5) * 0.04, 2)));
+			
+			this.formulario.getTxtrResultado().append("tita I: " + titai + "\n");
+			this.formulario.getTxtrResultado().append("tita D: " + titad + "\n");
 			
 			this.formulario.getTxtrResultado().append("beta Izq: " + mGR.getBetaIzq() + "\n");
 			this.formulario.getTxtrResultado().append("gamma Izq: " + mGR.getGammaIzq() + "\n");
@@ -193,17 +223,20 @@ public class MiActionListenerButton implements ActionListener {
 			this.formulario.getTxtrResultado().append("beta Der: " + mGR.getBetaDer() + "\n");
 			this.formulario.getTxtrResultado().append("gamma Der: " + mGR.getGammaDer() + "\n");
 			
-			ResultadoError Re = new ResultadoError(mGR.getBetaIzq(), 
-					mGR.getGammaIzq(),
-					mGR.getAlfaDer(),
-					mGR.getBetaDer(),
-					mGR.getGammaDer(),
-					new Double(this.formulario.getTxtRxi().getText()), 
+			ResultadoError Re = new ResultadoError(
+					Math.abs(mGR.getBetaIzq()) * Math.sin(titai), 
+					Math.abs(mGR.getGammaIzq()) * Math.sin(titai),
+					Math.abs(mGR.getAlfaDer()) * Math.sin(titad),
+					Math.abs(mGR.getBetaDer()) * Math.sin(titad),
+					Math.abs(mGR.getGammaDer()) * Math.sin(titad),
+					/*new Double(this.formulario.getTxtRxi().getText()), 
 					new Double(this.formulario.getTxtRyi().getText()), 
 					new Double(this.formulario.getTxtRzi().getText()),
 					new Double(this.formulario.getTxtRxd().getText()), 
 					new Double(this.formulario.getTxtRyd().getText()), 
-					new Double(this.formulario.getTxtRzd().getText()));
+					new Double(this.formulario.getTxtRzd().getText())*/
+					mRI.getOnSimpleMatrix(),
+					mRD.getOnSimpleMatrix());
 			
 			Re.calcularAngulos();
 			

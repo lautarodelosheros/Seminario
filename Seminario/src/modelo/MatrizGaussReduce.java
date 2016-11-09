@@ -40,7 +40,7 @@ public class MatrizGaussReduce {
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(0, 5);
+			return this.matrizGauss.get(0, 5);//6, 9);
 		}
 		
 		return 0;
@@ -51,7 +51,7 @@ public class MatrizGaussReduce {
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(1, 5);
+			return this.matrizGauss.get(1, 5);//2, 9);
 		}
 		
 		return 0;
@@ -62,7 +62,7 @@ public class MatrizGaussReduce {
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(2, 5);
+			return this.matrizGauss.get(2, 5);//8, 9);
 		}
 		
 		return 0;
@@ -73,7 +73,7 @@ public class MatrizGaussReduce {
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(3, 5);
+			return this.matrizGauss.get(3, 5);//3, 9);
 		}
 		
 		return 0;
@@ -84,7 +84,7 @@ public class MatrizGaussReduce {
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(4, 5);
+			return this.matrizGauss.get(4, 5);//5, 9);
 		}
 		
 		return 0;

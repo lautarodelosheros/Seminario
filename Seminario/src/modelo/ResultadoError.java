@@ -1,5 +1,7 @@
 package modelo;
 
+import org.ejml.simple.SimpleMatrix;
+
 public class ResultadoError {
 	private double betaIzq; 
 	private double gammaIzq;
@@ -18,6 +20,8 @@ public class ResultadoError {
 	private double anguloXIzqOriginal;
 	private double anguloYIzqOriginal;
 	private double anguloZIzqOriginal;
+	private SimpleMatrix MatrizRi;
+	private SimpleMatrix MatrizRd;
 	
 	
 	public ResultadoError(
@@ -26,12 +30,8 @@ public class ResultadoError {
 			double alfaDer,
 			double betaDer,
 			double gammaDer,
-			double anguloYDer,
-			double anguloXDer,
-			double anguloZDer,
-			double anguloXIzq,
-			double anguloYIzq,
-			double anguloZIzq
+			SimpleMatrix MatrizRi,
+			SimpleMatrix MatrizRd
 			) {
 		// TODO Auto-generated constructor stub
 		this.betaDer = betaDer;
@@ -39,22 +39,32 @@ public class ResultadoError {
 		this.alfaDer = alfaDer;
 		this.betaIzq = betaIzq;
 		this.gammaIzq = gammaIzq;
-		this.anguloYDerOriginal = anguloYDer;
+		/*this.anguloYDerOriginal = anguloYDer;
 		this.anguloXDerOriginal = anguloXDer;
 		this.anguloZDerOriginal = anguloZDer;
 		this.anguloXIzqOriginal = anguloXIzq;
 		this.anguloYIzqOriginal = anguloYIzq;
-		this.anguloZIzqOriginal = anguloZIzq;
+		this.anguloZIzqOriginal = anguloZIzq;*/
+		this.MatrizRi = MatrizRi;
+		this.MatrizRd = MatrizRd;
 	}
 	
 	public void calcularAngulos() {
-		this.anguloXDer = convertirAGrados(Math.asin(-this.alfaDer));
+		/*this.anguloXDer = convertirAGrados(Math.asin(-this.alfaDer));
 		this.anguloYDer = convertirAGrados(Math.asin(-this.betaDer / Math.cos(Math.asin(-this.alfaDer))));
 		this.anguloZDer = convertirAGrados(Math.asin(-this.gammaDer / Math.cos(Math.asin(-this.alfaDer))));
 		
 		this.anguloXIzq = convertirAGrados(Math.acos(1 / Math.cos(Math.asin(-this.gammaIzq))));
 		this.anguloYIzq = convertirAGrados(Math.asin(-this.betaIzq / Math.cos(Math.asin(-this.gammaIzq))));
-		this.anguloZIzq = convertirAGrados(Math.asin(-this.gammaIzq));
+		this.anguloZIzq = convertirAGrados(Math.asin(-this.gammaIzq));*/
+		
+		this.anguloXDer = convertirAGrados(this.alfaDer);
+		this.anguloYDer = convertirAGrados(this.betaDer);
+		this.anguloZDer = convertirAGrados(this.gammaDer);
+		
+		this.anguloXIzq = convertirAGrados(0.0);
+		this.anguloYIzq = convertirAGrados(this.betaIzq);
+		this.anguloZIzq = convertirAGrados(this.gammaIzq);
 	}
 	
 	private double convertirAGrados(double angulo) {
@@ -85,28 +95,28 @@ public class ResultadoError {
 		return anguloZIzq;
 	}
 	
-	public double getErrorAnguloYDer() {
-		return anguloYDer - this.anguloYDerOriginal;
-	}
-
 	public double getErrorAnguloXDer() {
-		return anguloXDer - this.anguloXDerOriginal;
+		return ((anguloXDer - this.MatrizRd.get(2, 1)) / anguloXDer) * 100;
+	}
+	
+	public double getErrorAnguloYDer() {
+		return ((anguloYDer - this.MatrizRd.get(0, 2)) / anguloYDer) * 100;
 	}
 
 	public double getErrorAnguloZDer() {
-		return anguloZDer - this.anguloZDerOriginal;
+		return ((anguloZDer - this.MatrizRd.get(1, 0)) / anguloZDer) * 100;
 	}
 
 	public double getErrorAnguloXIzq() {
-		return anguloXIzq - this.anguloXIzqOriginal;
+		return anguloXIzq - 0;
 	}
 
 	public double getErrorAnguloYIzq() {
-		return anguloYIzq - this.anguloYIzqOriginal;
+		return ((anguloYIzq - this.MatrizRi.get(0, 2)) / anguloYIzq) * 100;
 	}
 
 	public double getErrorAnguloZIzq() {
-		return anguloZIzq - this.anguloZIzqOriginal;
+		return ((anguloZIzq - this.MatrizRi.get(1, 0)) / anguloZIzq) * 100;
 	}
 	
 }

@@ -71,7 +71,10 @@ public class MatrizVector {
 	}
 
 	public MatrizVector dividirPorEscalar(double divisor) throws Exception {
-		return new MatrizVector(this.vector.divide(divisor));
+		MatrizVector v = new MatrizVector(this.vector.divide(divisor));
+		v.vector.set(2, v.getComponenteZ() * -1);		
+		//return new MatrizVector(this.vector.divide(divisor));
+		return v;
 	}
 
 	public double[] getOnArray() {

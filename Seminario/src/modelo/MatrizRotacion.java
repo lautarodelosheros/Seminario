@@ -19,7 +19,7 @@ public abstract class MatrizRotacion {
 		this.matrizRotacion = new SimpleMatrix(3,3);
 		
 		// add (fila, columna, valor)
-		this.matrizX = new SimpleMatrix(3,3);
+		/*this.matrizX = new SimpleMatrix(3,3);
 		
 		this.matrizX.set(0, 0, 1.0);
 		this.matrizX.set(0, 1, 0.0);
@@ -51,7 +51,7 @@ public abstract class MatrizRotacion {
 		this.matrizZ.set(1, 2, 0.0);
 		this.matrizZ.set(2, 0, 0.0);
 		this.matrizZ.set(2, 1, 0.0);
-		this.matrizZ.set(2, 2, 1.0);
+		this.matrizZ.set(2, 2, 1.0);*/
 				
 		crearMatrizRotacion(this.matrizRotacion, matrizX, matrizY, matrizZ);
 	}
@@ -94,6 +94,10 @@ public abstract class MatrizRotacion {
 	
 	public double getTraza() {
 		return this.matrizRotacion.trace();
+	}
+	
+	public SimpleMatrix getOnSimpleMatrix() {
+		return this.matrizRotacion;
 	}
 
 }

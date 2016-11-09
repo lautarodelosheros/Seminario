@@ -332,6 +332,24 @@ public class Form {
 		txtSyi.setText("0");
 		txtSzi.setText("0");
 		txtSxd.setText("5");
+		txtSyd.setText("0");
+		txtSzd.setText("0");
+		txtM1x.setText("0");
+		txtM1y.setText("1");
+		txtM1z.setText("10");
+		txtM2x.setText("1");
+		txtM2y.setText("2");
+		txtM2z.setText("13");
+		txtM3x.setText("2");
+		txtM3y.setText("1");
+		txtM3z.setText("14");
+		txtM4x.setText("4");
+		txtM4y.setText("3");
+		txtM4z.setText("12");
+		txtM5x.setText("5");
+		txtM5y.setText("1");
+		txtM5z.setText("11");
+		/*
 		txtSyd.setText("6");
 		txtSzd.setText("6.244");
 		txtM1x.setText("5");
@@ -348,7 +366,7 @@ public class Form {
 		txtM4z.setText("13");
 		txtM5x.setText("16");
 		txtM5y.setText("2");
-		txtM5z.setText("12");
+		txtM5z.setText("12");*/
 		
 						
 	}

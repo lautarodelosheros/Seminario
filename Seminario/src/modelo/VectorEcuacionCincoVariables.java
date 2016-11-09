@@ -14,18 +14,18 @@ public class VectorEcuacionCincoVariables extends VectorEcuacion {
 		/*
 		 * beta i = vd * ui  -> ai0
 		 * gamma i = -ui     -> ai1
-		 * alfa d = -1       -> ai2
+		 * alfa d = 1        -> ai2
 		 * beta d = -vi * ud -> ai3
 		 * gamma d = ud      -> ai4
-		 * R = vd - vi       -> ai5
+		 * R = vi - vd       -> ai5
 		 */
 		this.vectorEcuacion = new MatrizVector(
 				vectorUI.getComponenteX() * vectorUD.getComponenteY(),
 				vectorUI.getComponenteX() * -1,
-				-1,
+				1,
 				vectorUI.getComponenteY() * vectorUD.getComponenteX() * -1,
 				vectorUD.getComponenteX(),
-				vectorUD.getComponenteY() - vectorUI.getComponenteY());
+				vectorUI.getComponenteY() - vectorUD.getComponenteY());
 	}
 
 }
