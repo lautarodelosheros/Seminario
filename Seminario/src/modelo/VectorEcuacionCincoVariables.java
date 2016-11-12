@@ -22,10 +22,12 @@ public class VectorEcuacionCincoVariables extends VectorEcuacion {
 		this.vectorEcuacion = new MatrizVector(
 				vectorUI.getComponenteX() * vectorUD.getComponenteY(),
 				vectorUI.getComponenteX() * -1,
-				1,
+				(vectorUI.getComponenteY() * vectorUD.getComponenteY()) + 1,
 				vectorUI.getComponenteY() * vectorUD.getComponenteX() * -1,
 				vectorUD.getComponenteX(),
 				vectorUI.getComponenteY() - vectorUD.getComponenteY());
+		
+		//this.vectorEcuacion.getOnSimpleMatrix().print(10, 10);
 	}
 
 }

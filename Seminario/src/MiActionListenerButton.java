@@ -211,24 +211,24 @@ public class MiActionListenerButton implements ActionListener {
 			/*double titai = Math.asin(Math.sqrt(Math.pow(mGR.getBetaIzq(),2) + Math.pow(mGR.getGammaIzq(), 2)));
 			double titad = Math.asin(Math.sqrt(Math.pow(mGR.getAlfaDer(),2) + Math.pow(mGR.getBetaDer(), 2) + Math.pow(mGR.getGammaDer(), 2)));*/
 			
-			double titai = Math.asin(Math.sqrt(Math.pow((Math.sqrt(2) / 2) * 0.04,2) + Math.pow((Math.sqrt(2) / 2) * 0.04, 2)));
-			double titad = Math.asin(Math.sqrt(Math.pow((Math.sqrt(6) / 5) * 0.04,2) + Math.pow((Math.sqrt(6) / 5) * 0.04, 2) + Math.pow((Math.sqrt(13) / 5) * 0.04, 2)));
+			//double titai = Math.asin(Math.sqrt(Math.pow((Math.sqrt(2) / 2) * 0.04, 2) + Math.pow((Math.sqrt(2) / 2) * 0.04, 2)));
+			//double titad = Math.asin(Math.sqrt(Math.pow((Math.sqrt(6) / 5) * 0.04, 2) + Math.pow((Math.sqrt(6) / 5) * 0.04, 2) + Math.pow((Math.sqrt(13) / 5) * 0.04, 2)));
 			
-			this.formulario.getTxtrResultado().append("tita I: " + titai + "\n");
-			this.formulario.getTxtrResultado().append("tita D: " + titad + "\n");
+			//this.formulario.getTxtrResultado().append("tita I: " + titai + "\n");
+			//this.formulario.getTxtrResultado().append("tita D: " + titad + "\n");
 			
-			this.formulario.getTxtrResultado().append("beta Izq: " + mGR.getBetaIzq() + "\n");
-			this.formulario.getTxtrResultado().append("gamma Izq: " + mGR.getGammaIzq() + "\n");
-			this.formulario.getTxtrResultado().append("alfa Der: " + mGR.getAlfaDer() + "\n");
-			this.formulario.getTxtrResultado().append("beta Der: " + mGR.getBetaDer() + "\n");
-			this.formulario.getTxtrResultado().append("gamma Der: " + mGR.getGammaDer() + "\n");
+			this.formulario.getTxtrResultado().append("beta Izq: " + mGR.getBetaIzq() + "\n");// * Math.sin(titai) + "\n");
+			this.formulario.getTxtrResultado().append("gamma Izq: " + mGR.getGammaIzq() + "\n");// * Math.sin(titai) + "\n");
+			this.formulario.getTxtrResultado().append("alfa Der: " + mGR.getAlfaDer() + "\n");// * Math.sin(titad) + "\n");
+			this.formulario.getTxtrResultado().append("beta Der: " + mGR.getBetaDer() + "\n");// * Math.sin(titad) + "\n");
+			this.formulario.getTxtrResultado().append("gamma Der: " + mGR.getGammaDer() + "\n");// * Math.sin(titad) + "\n");
 			
 			ResultadoError Re = new ResultadoError(
-					Math.abs(mGR.getBetaIzq()) * Math.sin(titai), 
-					Math.abs(mGR.getGammaIzq()) * Math.sin(titai),
-					Math.abs(mGR.getAlfaDer()) * Math.sin(titad),
-					Math.abs(mGR.getBetaDer()) * Math.sin(titad),
-					Math.abs(mGR.getGammaDer()) * Math.sin(titad),
+					Math.abs(mGR.getBetaIzq()), 
+					Math.abs(mGR.getGammaIzq()),
+					Math.abs(mGR.getAlfaDer()),
+					Math.abs(mGR.getBetaDer()),
+					Math.abs(mGR.getGammaDer()),
 					/*new Double(this.formulario.getTxtRxi().getText()), 
 					new Double(this.formulario.getTxtRyi().getText()), 
 					new Double(this.formulario.getTxtRzi().getText()),
@@ -252,6 +252,8 @@ public class MiActionListenerButton implements ActionListener {
 			this.formulario.getTxtrResultado().append("ErrorAnguloXIzq: " + Re.getErrorAnguloXIzq() + "\n");
 			this.formulario.getTxtrResultado().append("ErrorAnguloYIzq: " + Re.getErrorAnguloYIzq() + "\n");
 			this.formulario.getTxtrResultado().append("ErrorAnguloZIzq: " + Re.getErrorAnguloZIzq() + "\n");
+			this.formulario.getTxtrResultado().append("ErrortitaIzq: " + Re.getErrorTitaIzq() + "\n");
+			this.formulario.getTxtrResultado().append("ErrortitaDer: " + Re.getErrorTitaDer() + "\n");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -260,7 +262,8 @@ public class MiActionListenerButton implements ActionListener {
 	}
 	
 	private double convertirARadianes(Double angulo) {
-		return (angulo * Math.PI) / 180;
+		//return (angulo * Math.PI) / 180;
+		return angulo;
 	}
 
 }

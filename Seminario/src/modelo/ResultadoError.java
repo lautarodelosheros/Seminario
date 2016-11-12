@@ -68,9 +68,10 @@ public class ResultadoError {
 	}
 	
 	private double convertirAGrados(double angulo) {
-		return (angulo * 180) / Math.PI;
+		//return (angulo * 180) / Math.PI;
+		return angulo;
 	}
-
+	
 	public double getAnguloYDer() {
 		return anguloYDer;
 	}
@@ -119,4 +120,20 @@ public class ResultadoError {
 		return ((anguloZIzq - this.MatrizRi.get(1, 0)) / anguloZIzq) * 100;
 	}
 	
+	public double getErrorTitaIzq() {
+		return Math.asin(Math.sqrt(Math.pow((Math.sqrt(2) / 2) * 0.04, 2)
+				+ Math.pow((Math.sqrt(2) / 2) * 0.04, 2))) -
+				Math.asin(Math.sqrt(Math.pow(anguloXIzq, 2)
+						+ Math.pow(anguloYIzq, 2)
+						+ Math.pow(anguloZIzq, 2)));
+	}
+	
+	public double getErrorTitaDer() {
+		return Math.asin(Math.sqrt(Math.pow((Math.sqrt(6) / 5) * 0.04, 2) 
+				+ Math.pow((Math.sqrt(6) / 5) * 0.04, 2) 
+				+ Math.pow((Math.sqrt(13) / 5) * 0.04, 2))) -
+				Math.asin(Math.sqrt(Math.pow(anguloXDer, 2)
+						+ Math.pow(anguloYDer, 2)
+						+ Math.pow(anguloZDer, 2)));
+	}
 }
