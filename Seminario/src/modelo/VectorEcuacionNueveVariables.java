@@ -20,7 +20,7 @@ public class VectorEcuacionNueveVariables  extends VectorEcuacion {
 		 * gamma d = ud
 		 * beta i = vd * ui
 		 * (alfad * betai) d = ui
-		 * alfa d = 1
+		 * alfa d = 1 + (vi * vd)
 		 * 
 		 * R = vi - vd
 		 */
@@ -33,8 +33,8 @@ public class VectorEcuacionNueveVariables  extends VectorEcuacion {
 				vectorUD.getComponenteX(),
 				vectorUD.getComponenteY() * vectorUI.getComponenteX(),
 				vectorUI.getComponenteX(),
-				1,
-				vectorUI.getComponenteY() - vectorUD.getComponenteY());
+				(1 + (vectorUI.getComponenteY() * vectorUD.getComponenteY())),
+				(vectorUI.getComponenteY() - vectorUD.getComponenteY()));
 		
 	}
 

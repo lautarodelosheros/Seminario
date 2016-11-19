@@ -1,15 +1,19 @@
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 
 
 public class Form {
 
 	private JFrame frame;
+	private ButtonGroup btngroup;
 	private JTextField txtRxi;
 	private JTextField txtRyi;
 	private JTextField txtRzi;
@@ -37,17 +41,40 @@ public class Form {
 	private JTextField txtM5x;
 	private JTextField txtM5y;
 	private JTextField txtM5z;
+	private JTextField txtM6x;
+	private JTextField txtM6y;
+	private JTextField txtM6z;
+	private JTextField txtM7x;
+	private JTextField txtM7y;
+	private JTextField txtM7z;
+	private JTextField txtM8x;
+	private JTextField txtM8y;
+	private JTextField txtM8z;
+	private JTextField txtM9x;
+	private JTextField txtM9y;
+	private JTextField txtM9z;
+	private JTextField txtThetaD;
+	private JTextField txtThetaI;
 	private JButton btnSimular;
+	private JButton btnExportar;
+	private JRadioButton rbtn5Incog;
+	private JRadioButton rbtn9Incog;
 	private JTextArea txtrResultado;
 	private JLabel lblAngRotIzq;
 	private JLabel lblAngRotDer;
 	private JLabel lblVecSIzq;
 	private JLabel lblVecSDer;
+	private JLabel lblThetaI;
+	private JLabel lblThetaD;
 	private JLabel lblVecM1;
 	private JLabel lblVecM2;
 	private JLabel lblVecM3;
 	private JLabel lblVecM4;
 	private JLabel lblVecM5;
+	private JLabel lblVecM6;
+	private JLabel lblVecM7;
+	private JLabel lblVecM8;
+	private JLabel lblVecM9;
 
 	/**
 	 * Create the application.
@@ -73,7 +100,7 @@ public class Form {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		lblAngRotIzq = new JLabel("Angulos de rotacion Izquierda");
+		lblAngRotIzq = new JLabel("Versor izquierdo");
 		lblAngRotIzq.setFont(new Font("Monospaced", Font.PLAIN, 9));
 		lblAngRotIzq.setBounds(59, 30, 284, 19);
 		frame.getContentPane().add(lblAngRotIzq);
@@ -99,7 +126,7 @@ public class Form {
 		txtRzi.selectAll();
 		txtRzi.setColumns(10);
 		
-		lblAngRotDer = new JLabel("Angulos de rotacion Derecha");
+		lblAngRotDer = new JLabel("Versor Derecho");
 		lblAngRotDer.setFont(new Font("Monospaced", Font.PLAIN, 9));
 		lblAngRotDer.setBounds(59, 70, 284, 19);
 		frame.getContentPane().add(lblAngRotDer);
@@ -306,69 +333,226 @@ public class Form {
 		txtM5z.setBounds(310, 370, 114, 19);
 		txtM5z.selectAll();
 		frame.getContentPane().add(txtM5z);
-						
+		
+		lblVecM6 = new JLabel("Vector punto referencial M6");
+		lblVecM6.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM6.setBounds(59, 390, 284, 19);
+		frame.getContentPane().add(lblVecM6);
+		
+		txtM6x = new JTextField();
+		txtM6x.setText("m6xd");
+		txtM6x.setColumns(5);
+		txtM6x.setBounds(59, 410, 114, 19);
+		txtM6x.selectAll();
+		frame.getContentPane().add(txtM6x);
+		
+		txtM6y = new JTextField();
+		txtM6y.setText("m6yd");
+		txtM6y.setColumns(10);
+		txtM6y.setBounds(185, 410, 114, 19);
+		txtM6y.selectAll();
+		frame.getContentPane().add(txtM6y);
+		
+		txtM6z = new JTextField();
+		txtM6z.setText("m6zd");
+		txtM6z.setColumns(10);
+		txtM6z.setBounds(310, 410, 114, 19);
+		txtM6z.selectAll();
+		frame.getContentPane().add(txtM6z);
+
+		lblVecM7 = new JLabel("Vector punto referencial M7");
+		lblVecM7.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM7.setBounds(59, 430, 284, 19);
+		frame.getContentPane().add(lblVecM7);
+		
+		txtM7x = new JTextField();
+		txtM7x.setText("m7xd");
+		txtM7x.setColumns(5);
+		txtM7x.setBounds(59, 450, 114, 19);
+		txtM7x.selectAll();
+		frame.getContentPane().add(txtM7x);
+		
+		txtM7y = new JTextField();
+		txtM7y.setText("m7yd");
+		txtM7y.setColumns(10);
+		txtM7y.setBounds(185, 450, 114, 19);
+		txtM7y.selectAll();
+		frame.getContentPane().add(txtM7y);
+		
+		txtM7z = new JTextField();
+		txtM7z.setText("m7zd");
+		txtM7z.setColumns(10);
+		txtM7z.setBounds(310, 450, 114, 19);
+		txtM7z.selectAll();
+		frame.getContentPane().add(txtM7z);
+		
+		lblVecM8 = new JLabel("Vector punto referencial M8");
+		lblVecM8.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM8.setBounds(59, 470, 284, 19);
+		frame.getContentPane().add(lblVecM8);
+		
+		txtM8x = new JTextField();
+		txtM8x.setText("m8xd");
+		txtM8x.setColumns(5);
+		txtM8x.setBounds(59, 490, 114, 19);
+		txtM8x.selectAll();
+		frame.getContentPane().add(txtM8x);
+		
+		txtM8y = new JTextField();
+		txtM8y.setText("m8yd");
+		txtM8y.setColumns(10);
+		txtM8y.setBounds(185, 490, 114, 19);
+		txtM8y.selectAll();
+		frame.getContentPane().add(txtM8y);
+		
+		txtM8z = new JTextField();
+		txtM8z.setText("m8zd");
+		txtM8z.setColumns(10);
+		txtM8z.setBounds(310, 490, 114, 19);
+		txtM8z.selectAll();
+		frame.getContentPane().add(txtM8z);
+		
+
+		lblVecM9 = new JLabel("Vector punto referencial M9");
+		lblVecM9.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblVecM9.setBounds(59, 510, 284, 19);
+		frame.getContentPane().add(lblVecM9);
+		
+		txtM9x = new JTextField();
+		txtM9x.setText("m9xd");
+		txtM9x.setColumns(5);
+		txtM9x.setBounds(59, 530, 114, 19);
+		txtM9x.selectAll();
+		frame.getContentPane().add(txtM9x);
+		
+		txtM9y = new JTextField();
+		txtM9y.setText("m8yd");
+		txtM9y.setColumns(10);
+		txtM9y.setBounds(185, 530, 114, 19);
+		txtM9y.selectAll();
+		frame.getContentPane().add(txtM9y);
+		
+		txtM9z = new JTextField();
+		txtM9z.setText("m9zd");
+		txtM9z.setColumns(10);
+		txtM9z.setBounds(310, 530, 114, 19);
+		txtM9z.selectAll();
+		frame.getContentPane().add(txtM9z);
+
+		lblThetaI = new JLabel("Angulo Izquierdo");
+		lblThetaI.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblThetaI.setBounds(450, 30, 284, 19);
+		frame.getContentPane().add(lblThetaI);
+		
+		txtThetaI = new JTextField();
+		txtThetaI.setText("theta i");
+		txtThetaI.setColumns(5);
+		txtThetaI.setBounds(450, 50, 114, 19);
+		txtThetaI.selectAll();
+		frame.getContentPane().add(txtThetaI);
+		
+		lblThetaD = new JLabel("Angulo Derecho");
+		lblThetaD.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		lblThetaD.setBounds(450, 70, 284, 19);
+		frame.getContentPane().add(lblThetaD);
+		
+		txtThetaD = new JTextField();
+		txtThetaD.setText("thetad");
+		txtThetaD.setColumns(5);
+		txtThetaD.setBounds(450, 90, 114, 19);
+		txtThetaD.selectAll();
+		frame.getContentPane().add(txtThetaD);
+		
+		rbtn5Incog = new JRadioButton();
+		rbtn5Incog.setText("Sist. con 5 incognitas");
+		rbtn5Incog.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		rbtn5Incog.setBounds(580, 50, 200, 19);
+		frame.getContentPane().add(rbtn5Incog);
+		
+		rbtn9Incog = new JRadioButton();
+		rbtn9Incog.setText("Sist. con 9 incognitas");
+		rbtn9Incog.setFont(new Font("Monospaced", Font.PLAIN, 9));
+		rbtn9Incog.setBounds(580, 90, 200, 19);
+		frame.getContentPane().add(rbtn9Incog);
+		
+		btngroup = new ButtonGroup();
+		btngroup.add(rbtn5Incog);
+		btngroup.add(rbtn9Incog);		
+		
 		btnSimular = new JButton("Simular");
-		btnSimular.setBounds(185, 489, 117, 25);
+		btnSimular.setBounds(460, 550, 117, 25);
 		frame.getContentPane().add(btnSimular);
+		
+		btnExportar = new JButton("Exportar");
+		btnExportar.setBounds(610, 550, 117, 25);
+		frame.getContentPane().add(btnExportar);
 		
 		txtrResultado = new JTextArea();
 		txtrResultado.setText("Resultado");
-		txtrResultado.setBounds(472, 65, 300, 350);
+		txtrResultado.setBounds(450, 130, 300, 350);
 		txtrResultado.setEditable(false);
 		//frame.getContentPane().add(txtrResultado);
 		
 		JScrollPane scrollPane = new JScrollPane(txtrResultado);
-		scrollPane.setBounds(472, 63, 300, 350);		
+		scrollPane.setBounds(450, 130, 300, 350);		
 		frame.getContentPane().add(scrollPane);
 		
 		//Eliminar harcode
-		txtRxi.setText("2.5");
-		txtRyi.setText("1.5");
-		txtRzi.setText("2");
-		txtRxd.setText("1.5");
-		txtRyd.setText("2");
-		txtRzd.setText("2.5");
+		txtRxi.setText("0.0");
+		txtRyi.setText("1 / sqrt(2)");
+		txtRzi.setText("1 / sqrt(2)");
+		txtRxd.setText("sqrt(6) / 5");
+		txtRyd.setText("sqrt(6) / 5");
+		txtRzd.setText("sqrt(13) / 5");
+		
 		txtSxi.setText("0");
 		txtSyi.setText("0");
 		txtSzi.setText("0");
-		txtSxd.setText("5");
+		
+		txtSxd.setText("50");
 		txtSyd.setText("0");
 		txtSzd.setText("0");
-		txtM1x.setText("0");
-		txtM1y.setText("1");
-		txtM1z.setText("10");
-		txtM2x.setText("1");
-		txtM2y.setText("2");
-		txtM2z.setText("13");
-		txtM3x.setText("2");
-		txtM3y.setText("1");
-		txtM3z.setText("14");
-		txtM4x.setText("4");
-		txtM4y.setText("3");
-		txtM4z.setText("12");
-		txtM5x.setText("5");
-		txtM5y.setText("1");
-		txtM5z.setText("11");
-		/*
-		txtSyd.setText("6");
-		txtSzd.setText("6.244");
-		txtM1x.setText("5");
-		txtM1y.setText("5");
-		txtM1z.setText("12");
-		txtM2x.setText("7");
-		txtM2y.setText("4");
-		txtM2z.setText("15");
-		txtM3x.setText("9");
-		txtM3y.setText("2");
-		txtM3z.setText("13");
-		txtM4x.setText("12");
-		txtM4y.setText("3");
-		txtM4z.setText("13");
-		txtM5x.setText("16");
-		txtM5y.setText("2");
-		txtM5z.setText("12");*/
 		
-						
+		txtM1x.setText("0");
+		txtM1y.setText("10");
+		txtM1z.setText("100");
+		
+		txtM2x.setText("5");
+		txtM2y.setText("22");
+		txtM2z.setText("110");
+		
+		txtM3x.setText("10");
+		txtM3y.setText("-14");
+		txtM3z.setText("125");
+		
+		txtM4x.setText("16");
+		txtM4y.setText("-28");
+		txtM4z.setText("132");
+		
+		txtM5x.setText("24");
+		txtM5y.setText("35");
+		txtM5z.setText("145");
+		
+		txtM6x.setText("31");
+		txtM6y.setText("50");
+		txtM6z.setText("130");
+		
+		txtM7x.setText("39");
+		txtM7y.setText("-41");
+		txtM7z.setText("120");
+		
+		txtM8x.setText("44");
+		txtM8y.setText("30");
+		txtM8z.setText("113");
+		
+		txtM9x.setText("50");
+		txtM9y.setText("-50");
+		txtM9z.setText("106");
+		
+		txtThetaI.setText("0.04");
+		txtThetaD.setText("0.04");
+		rbtn5Incog.setSelected(true);
+		rbtn9Incog.setSelected(false);
 	}
 
 	public JTextField getTxtRxi() {
@@ -479,12 +663,76 @@ public class Form {
 		return txtM5z;
 	}
 
+	public JTextField getTxtM6x() {
+		return txtM6x;
+	}
+
+	public JTextField getTxtM6y() {
+		return txtM6y;
+	}
+
+	public JTextField getTxtM6z() {
+		return txtM6z;
+	}
+
+	public JTextField getTxtM7x() {
+		return txtM7x;
+	}
+
+	public JTextField getTxtM7y() {
+		return txtM7y;
+	}
+
+	public JTextField getTxtM7z() {
+		return txtM7z;
+	}
+
+	public JTextField getTxtM8x() {
+		return txtM8x;
+	}
+
+	public JTextField getTxtM8y() {
+		return txtM8y;
+	}
+
+	public JTextField getTxtM8z() {
+		return txtM8z;
+	}
+
+	public JTextField getTxtM9x() {
+		return txtM9x;
+	}
+
+	public JTextField getTxtM9y() {
+		return txtM9y;
+	}
+
+	public JTextField getTxtM9z() {
+		return txtM9z;
+	}
+
 	public JTextArea getTxtrResultado() {
 		return txtrResultado;
 	}
 
 	public void setTxtrResultado(JTextArea txtrResultado) {
 		this.txtrResultado = txtrResultado;
+	}
+
+	public JTextField getTxtThetaI() {
+		return this.txtThetaI;
+	}
+	
+	public JTextField getTxtThetaD() {
+		return this.txtThetaD;
+	}
+	
+	public boolean isCincoIncognitas() {
+		return this.rbtn5Incog.isSelected();
+	}
+	
+	public boolean isNueveIncognitas() {
+		return this.rbtn9Incog.isSelected();
 	}
 	
 }

@@ -34,57 +34,80 @@ public class MatrizGaussReduce {
 		unGauss.reduce(this.matrizGauss.getMatrix(), this.nroVariables);
 	}
 	
-	// cambiar estos metodo hardcode	
-	public double getBetaIzq() {
+	private MatrizVector getVectorResultado() throws Exception {
+		return new MatrizVector(this.matrizGauss.extractVector(false, this.matrizGauss.numCols() - 1));
+	}
+	
+	public double getBetaIzq() throws Exception {
 		SimpleMatrix Identidad = this.matrizGauss.extractMatrix(0, nroEcuaciones, 0, nroVariables);
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(0, 5);//6, 9);
+			MatrizVector res = getVectorResultado();
+			if (res.getDimension() == 5)
+				return res.getComponenteN(0);
+			if (res.getDimension() == 9)
+				return res.getComponenteN(6);
 		}
 		
 		return 0;
 	}
 	
-	public double getGammaIzq() {
+	public double getGammaIzq() throws Exception {
 		SimpleMatrix Identidad = this.matrizGauss.extractMatrix(0, nroEcuaciones, 0, nroVariables);
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(1, 5);//2, 9);
+			MatrizVector res = getVectorResultado();
+			if (res.getDimension() == 5)
+				return res.getComponenteN(1);
+			if (res.getDimension() == 9)
+				return res.getComponenteN(2);
 		}
 		
 		return 0;
 	}
 	
-	public double getAlfaDer() {
+	public double getAlfaDer() throws Exception {
 		SimpleMatrix Identidad = this.matrizGauss.extractMatrix(0, nroEcuaciones, 0, nroVariables);
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(2, 5);//8, 9);
+			MatrizVector res = getVectorResultado();
+			if (res.getDimension() == 5)
+				return res.getComponenteN(2);
+			if (res.getDimension() == 9)
+				return res.getComponenteN(8);
 		}
 		
 		return 0;
 	}
 	
-	public double getBetaDer() {
+	public double getBetaDer() throws Exception {
 		SimpleMatrix Identidad = this.matrizGauss.extractMatrix(0, nroEcuaciones, 0, nroVariables);
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(3, 5);//3, 9);
+			MatrizVector res = getVectorResultado();
+			if (res.getDimension() == 5)
+				return res.getComponenteN(3);
+			if (res.getDimension() == 9)
+				return res.getComponenteN(3);
 		}
 		
 		return 0;
 	}
 	
-	public double getGammaDer() {
+	public double getGammaDer() throws Exception {
 		SimpleMatrix Identidad = this.matrizGauss.extractMatrix(0, nroEcuaciones, 0, nroVariables);
 		
 		if (Identidad.determinant() == 1	&& 
 				Identidad.trace() == Identidad.numCols()) {
-			return this.matrizGauss.get(4, 5);//5, 9);
+			MatrizVector res = getVectorResultado();
+			if (res.getDimension() == 5)
+				return res.getComponenteN(4);
+			if (res.getDimension() == 9)
+				return res.getComponenteN(5);
 		}
 		
 		return 0;

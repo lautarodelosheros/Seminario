@@ -9,57 +9,51 @@ import org.ejml.simple.SimpleMatrix;
 
 
 
-public abstract class MatrizRotacion {
+public class MatrizRotacion {
 	protected SimpleMatrix matrizRotacion;
-	protected SimpleMatrix matrizX;
-	protected SimpleMatrix matrizY;
-	protected SimpleMatrix matrizZ;
 	
-	public MatrizRotacion(double anguloEnX, double anguloEnY, double anguloEnZ) {
+	public MatrizRotacion(MatrizVector vectorUx, double theta) {
 		this.matrizRotacion = new SimpleMatrix(3,3);
 		
-		// add (fila, columna, valor)
-		/*this.matrizX = new SimpleMatrix(3,3);
+		SimpleMatrix matrizA = new SimpleMatrix(3,3);		
 		
-		this.matrizX.set(0, 0, 1.0);
-		this.matrizX.set(0, 1, 0.0);
-		this.matrizX.set(0, 2, 0.0);
-		this.matrizX.set(1, 0, 0.0);
-		this.matrizX.set(1, 1, Math.cos(anguloEnX));
-		this.matrizX.set(1, 2, Math.sin(anguloEnX));
-		this.matrizX.set(2, 0, 0.0);
-		this.matrizX.set(2, 1, Math.sin(anguloEnX) * -1);
-		this.matrizX.set(2, 2, Math.cos(anguloEnX));
+		matrizA.set(0, 0, 0.0);
+		matrizA.set(0, 1, vectorUx.getComponenteN(2) * -1);
+		matrizA.set(0, 2, vectorUx.getComponenteN(1));
+		matrizA.set(1, 0, vectorUx.getComponenteN(2));
+		matrizA.set(1, 1, 0.0);
+		matrizA.set(1, 2, vectorUx.getComponenteN(0) * -1);
+		matrizA.set(2, 0, vectorUx.getComponenteN(1) * -1);
+		matrizA.set(2, 1, vectorUx.getComponenteN(0));
+		matrizA.set(2, 2, 0.0);
 		
-		this.matrizY = new SimpleMatrix(3,3);
-		this.matrizY.set(0, 0, Math.cos(anguloEnY));
-		this.matrizY.set(0, 1, 0.0);		
-		this.matrizY.set(0, 2, Math.sin(anguloEnY) * -1);
-		this.matrizY.set(1, 0, 0.0);
-		this.matrizY.set(1, 1, 1.0);
-		this.matrizY.set(1, 2, 0.0);
-		this.matrizY.set(2, 0, Math.sin(anguloEnY));
-		this.matrizY.set(2, 1, 0.0);
-		this.matrizY.set(2, 2, Math.cos(anguloEnY));		
+		SimpleMatrix matrizSin = new SimpleMatrix(3,3);
+		matrizSin.set(0, 0, Math.sin(theta));
+		matrizSin.set(1, 0, Math.sin(theta));
+		matrizSin.set(2, 0, Math.sin(theta));
+		matrizSin.set(0, 1, Math.sin(theta));
+		matrizSin.set(1, 1, Math.sin(theta));
+		matrizSin.set(2, 1, Math.sin(theta));
+		matrizSin.set(0, 2, Math.sin(theta));
+		matrizSin.set(1, 2, Math.sin(theta));
+		matrizSin.set(2, 2, Math.sin(theta));
 		
-		this.matrizZ = new SimpleMatrix(3,3);
-		this.matrizZ.set(0, 0, Math.cos(anguloEnZ));
-		this.matrizZ.set(0, 1, Math.sin(anguloEnZ));
-		this.matrizZ.set(0, 2, 0.0);		
-		this.matrizZ.set(1, 0, Math.sin(anguloEnZ) * -1);
-		this.matrizZ.set(1, 1, Math.cos(anguloEnZ));
-		this.matrizZ.set(1, 2, 0.0);
-		this.matrizZ.set(2, 0, 0.0);
-		this.matrizZ.set(2, 1, 0.0);
-		this.matrizZ.set(2, 2, 1.0);*/
-				
-		crearMatrizRotacion(this.matrizRotacion, matrizX, matrizY, matrizZ);
+		SimpleMatrix matrizCos = new SimpleMatrix(3,3);
+		matrizCos.set(0, 0, 1 - Math.cos(theta));
+		matrizCos.set(1, 0, 1 - Math.cos(theta));
+		matrizCos.set(2, 0, 1 - Math.cos(theta));
+		matrizCos.set(0, 1, 1 - Math.cos(theta));
+		matrizCos.set(1, 1, 1 - Math.cos(theta));
+		matrizCos.set(2, 1, 1 - Math.cos(theta));
+		matrizCos.set(0, 2, 1 - Math.cos(theta));
+		matrizCos.set(1, 2, 1 - Math.cos(theta));
+		matrizCos.set(2, 2, 1 - Math.cos(theta));
+		
+		//R = I + Asin(theta) + AxA(1 - matrizCos(theta))
+		this.matrizRotacion = SimpleMatrix.identity(3).plus(matrizA.elementMult(matrizSin)).plus(matrizA.mult(matrizA).elementMult(matrizCos));
+		//this.matrizRotacion = SimpleMatrix.identity(3).plus(matrizA.elementMult(matrizSin));
 	}
 	
-	protected abstract void crearMatrizRotacion(SimpleMatrix matrizRotacion,
-			SimpleMatrix matrizX, SimpleMatrix matrizY,
-			SimpleMatrix matrizZ);
-
 	public String toString() {
 		ByteArrayOutputStream sMatrizRotcion = new ByteArrayOutputStream();
 		
